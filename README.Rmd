@@ -15,7 +15,7 @@ library(ig)
 ```
 # ig
 
-Minimal R client for interacting with Instagram's public API.
+> 🖼  A minimal R client for interacting with Instagram's public API.
 
 ## Installation
 
@@ -67,9 +67,9 @@ as_tbl(my_media)
 
 ### `tags/{tags-name}`
 
-```{r tags_name}
+```{r tags}
 ## get tags data
-ig_tags <- ig_tags_name(tag = "metoo")
+ig_tags <- ig_tags(tag = "metoo")
 
 ## view data
 as_tbl(ig_tags)

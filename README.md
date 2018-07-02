@@ -3,7 +3,7 @@
 
 # ig
 
-Minimal R client for interacting with Instagram’s public API.
+> 🖼 A minimal R client for interacting with Instagram’s public API.
 
 ## Installation
 
@@ -103,7 +103,7 @@ as_tbl(my_media)
 
 ``` r
 ## get tags data
-ig_tags <- ig_tags_name(tag = "metoo")
+ig_tags <- ig_tags(tag = "metoo")
 
 ## view data
 as_tbl(ig_tags)
@@ -115,7 +115,7 @@ as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1210871
+#> 1 metoo     1210874
 ```
 
 ### `tags/search`
@@ -134,13 +134,13 @@ as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1210871
+#>  1 metoo                 1210874
 #>  2 metootoys                4405
 #>  3 metoo❤️                 25443
 #>  4 metoodoll               26877
 #>  5 metoodolls               9874
 #>  6 metooo                   2376
-#>  7 metoomovement           24356
+#>  7 metoomovement           24357
 #>  8 metooangela             10131
 #>  9 metoobuddy               3280
 #> 10 sheknowsmetoowell       41118

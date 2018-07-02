@@ -58,11 +58,11 @@ ig_tags_media_recent <- function(tag = "nofilter", ...) {
 #' @return Returns tags data.
 #' @examples
 #' \dontrun{
-#' ig_tags <- ig_tags_name()
-#' as_tbl(ig_tags)
+#' ig_tag <- ig_tags()
+#' as_tbl(ig_tag)
 #' }
 #' @export
-ig_tags_name <- function(tag = "nofilter", ...) {
+ig_tags <- function(tag = "nofilter", ...) {
   ig_api_get(path = sprintf("tags/%s/", tag), ...)
 }
 
