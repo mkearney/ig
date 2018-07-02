@@ -19,3 +19,12 @@ An HTTP response object.
 \description{
 Send GET requests to Instagram's API
 }
+\examples{
+\dontrun{
+## make custom request to locations/search endpoint
+ig_locs <- ig_api_get("locations/search", lat = 48.858844, lng = 2.294351)
+
+## view data
+ig_as_tbl(ig_locs)
+}
+}

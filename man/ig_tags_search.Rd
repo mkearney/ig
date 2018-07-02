@@ -19,7 +19,10 @@ Interacting with the tags/search endpoint of Instagram's API
 }
 \examples{
 \dontrun{
+## search for tags/counts
 ig_tags <- ig_tags_search()
+
+## view data
 ig_as_tbl(ig_tags)
 }
 }

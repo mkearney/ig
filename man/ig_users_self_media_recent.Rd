@@ -14,7 +14,10 @@ Interacting with the users/self/media/recent endpoint of Instagram's API
 }
 \examples{
 \dontrun{
+## get your recent media
 my_media <- ig_users_self_media_recent()
-as_tbl(my_media)
+
+## view data
+ig_as_tbl(my_media)
 }
 }

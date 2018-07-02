@@ -5,8 +5,11 @@
 #' @return Returns user data.
 #' @examples
 #' \dontrun{
+#' ## get your data
 #' my_ig <- ig_users_self()
-#' as_tbl(my_ig)
+#'
+#' ## view data
+#' ig_as_tbl(my_ig)
 #' }
 #' @export
 ig_users_self <- function() {
@@ -20,8 +23,11 @@ ig_users_self <- function() {
 #' @return Returns user media data.
 #' @examples
 #' \dontrun{
+#' ## get your recent media
 #' my_media <- ig_users_self_media_recent()
-#' as_tbl(my_media)
+#'
+#' ## view data
+#' ig_as_tbl(my_media)
 #' }
 #' @export
 ig_users_self_media_recent <- function() {

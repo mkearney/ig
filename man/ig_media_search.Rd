@@ -17,7 +17,10 @@ Interacting with the media/search endpoint of Instagram's API
 }
 \examples{
 \dontrun{
+## search media
 ig_media <- ig_media_search()
+
+## view data
 ig_as_tbl(ig_media)
 }
 }

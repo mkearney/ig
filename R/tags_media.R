@@ -5,7 +5,10 @@
 #' @return Returns user data.
 #' @examples
 #' \dontrun{
+#' ## get popular media
 #' pop <- ig_media_popular()
+#'
+#' ## view data
 #' ig_as_tbl(pop)
 #' }
 #' @export
@@ -22,7 +25,10 @@ ig_media_popular <- function() {
 #' @return Returns media data.
 #' @examples
 #' \dontrun{
+#' ## search media
 #' ig_media <- ig_media_search()
+#'
+#' ## view data
 #' ig_as_tbl(ig_media)
 #' }
 #' @export
@@ -40,7 +46,10 @@ ig_media_search <- function(...) {
 #' @return Returns tags media data.
 #' @examples
 #' \dontrun{
+#' ## get recent media
 #' tags_media <- ig_tags_media_recent()
+#'
+#' ## view data
 #' ig_as_tbl(tags_media)
 #' }
 #' @export
@@ -58,7 +67,10 @@ ig_tags_media_recent <- function(tag = "nofilter", ...) {
 #' @return Returns tags data.
 #' @examples
 #' \dontrun{
+#' ## get tag count
 #' ig_tag <- ig_tags()
+#'
+#' ## view data
 #' ig_as_tbl(ig_tag)
 #' }
 #' @export
@@ -75,7 +87,10 @@ ig_tags <- function(tag = "nofilter", ...) {
 #' @return Returns tags data.
 #' @examples
 #' \dontrun{
+#' ## search for tags/counts
 #' ig_tags <- ig_tags_search()
+#'
+#' ## view data
 #' ig_as_tbl(ig_tags)
 #' }
 #' @export

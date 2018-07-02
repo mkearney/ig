@@ -14,7 +14,10 @@ Interacting with the media/popular endpoint of Instagram's API
 }
 \examples{
 \dontrun{
+## get popular media
 pop <- ig_media_popular()
+
+## view data
 ig_as_tbl(pop)
 }
 }

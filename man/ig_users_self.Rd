@@ -14,7 +14,10 @@ Interacting with the users/self endpoint of Instagram's API
 }
 \examples{
 \dontrun{
+## get your data
 my_ig <- ig_users_self()
-as_tbl(my_ig)
+
+## view data
+ig_as_tbl(my_ig)
 }
 }
