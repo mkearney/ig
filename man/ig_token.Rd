@@ -7,12 +7,14 @@
 \usage{
 ig_token()
 
-ig_create_token(client_id, client_secret)
+ig_create_token(client_id, client_secret, scope = "basic public_content")
 }
 \arguments{
 \item{client_id}{Client key.}
 
 \item{client_secret}{Client secret.}
+
+\item{scope}{Desired scope, defaults to basic and public.}
 }
 \value{
 The user's access token, if available.

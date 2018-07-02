@@ -137,27 +137,11 @@ ig_create_token <- function(client_id, client_secret, scope = "basic public_cont
   Sys.setenv("HTTR_SERVER_PORT" = "1410")
   app <- httr::oauth_app("ig_r_client", client_id, client_secret,
     redirect_uri = "http://127.0.0.1:1410")
-  if (!identical(Sys.getenv("INSTAGRAM_CODE"), "")) {
-    token <- oauth_code_bypass(app, Sys.getenv("INSTAGRAM_CODE"))
-  } else {
-    token <- httr::init_oauth2.0(ig_oauth_endpoint(), app, scope = scope)
-  }
+  token <- httr::init_oauth2.0(ig_oauth_endpoint(), app, scope = scope)
   set_renv(INSTAGRAM_PAT = token$access_token)
   message("Token created and stored as `INSTAGRAM_PAT` environment variable!",
   " To view your access token, use `ig_token()`.")
   invisible(token)
-}
-
-oauth_code_bypass <- function(app, code) {
-  httr::oauth2.0_access_token(ig_oauth_endpoint(), app, code)
-}
-
-set_oauth_code_bypass <- function(app, scope) {
-  auth_url <- httr:::oauth2.0_authorize_url(ig_oauth_endpoint(),
-    app, scope = scope, redirect_uri = "http://127.0.0.1:1410",
-    state = httr:::nonce())
-  code <- httr:::oauth_authorize(auth_url, FALSE)
-  set_renv(INSTAGRAM_CODE = code)
 }
 
 ig_oauth_endpoint <- function() {
