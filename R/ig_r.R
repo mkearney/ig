@@ -101,28 +101,9 @@ ig_api_post <- function(...) {
   invisible(r)
 }
 
-as_lstbl <- function(x) {
-  n <- nrow(x)  
-  while (any(map_lgl(x, ~ !sum(lengths(.x)) %in% c(0, 1, n)))) {
-    i <- names(x)[which(map_lgl(x, ~ !sum(lengths(.x)) %in% c(0, 1, n)))][1]    
-    if (is.data.frame(x[[i]])) {
-      xi <- as.list(x[[i]])
-      names(xi) <- paste0(i, "_", names(xi))
-    } else {
-      xi <- x[[i]]
-      nms <- map(xi[lengths(xi) > 0], names) %>% unlist() %>% unique()
-      xi <- map(map(nms, function(a) map(xi, getElement, a)), 
-        ~ ifelse(lengths(.x) == 0 | map_lgl(.x, ~ length(.x) == 1 && is.na(.x)), 
-          NA_character_, paste(unlist(.x), collapse = ",")))
-      names(xi) <- nms
-    }
-    x[[i]] <- NULL
-    x[(length(x) + 1):(length(x) + 1 + length(xi))] <- xi
-  }
-  x[1:ncol(x)] <- map(x, unlist)
-  tfse::as_tbl(x)
+as_tbl <- function(...) {
+  tibble::as_tibble(..., validate = FALSE)
 }
-
 
 `%||%` <- function(a, b) a || isTRUE(tryCatch(`(`(b), error = function(e) return(FALSE)))
 
@@ -138,7 +119,8 @@ as_lstbl <- function(x) {
 #' }
 #' @export 
 ig_users_self <- function() {
-  ig_api_get(path = "users/self")
+  r <- ig_api_get(path = "users/self")
+  as_tbl(c(r$data[!names(r$data) %in% "counts"], r$data$counts))
 }
 
 
