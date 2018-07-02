@@ -123,7 +123,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1211576
+#> 1 metoo     1211578
 ```
 
 ### `tags/search`
@@ -142,9 +142,9 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1211576
+#>  1 metoo                 1211578
 #>  2 metootoys                4408
-#>  3 metoo❤️                 25469
+#>  3 metoo❤️                 25470
 #>  4 metoodoll               26903
 #>  5 metoodolls               9878
 #>  6 metooo                   2377
@@ -196,6 +196,6 @@ ig_as_tbl(ig_locs)
 #> 20 290297           Musée du quai Branly - Jacques Chi…     48.9      2.30
 ```
 
-<sup>1</sup>*note: All keys provided in examples are fake but are
+<sup>1</sup>\* note:\* All keys provided in examples are fake but are
 otherwise designed to appear similar to the actual keys assigned by
-Instagram*
+Instagram\*.
