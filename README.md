@@ -15,9 +15,7 @@ devtools::install_github("mkearney/ig")
 
 ## Example
 
-\<\<\<\<\<\<\< HEAD Access Instagram’s **`users/self`** endpoint.
-======= Access Instagram’s *`users/self`* endpoint. \>\>\>\>\>\>\>
-fd5db518680cec37106c432fec6583b07146cbd9
+Access Instagram’s **`users/self`** endpoint.
 
 ``` r
 ## get data from users
