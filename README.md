@@ -27,9 +27,9 @@ ig_create_token("pb112zgv5065tu60pxnqvp88f6hovbur",
   "drz97x61d9s5g2nlcu87v63mdphiedcv")
 ```
 
-It’s not necessary to specify your token in each request (***ig***)
-actually does that in the background), but if you’d like to view your
-access token, use `ig_token()`.
+It’s not necessary to specify your token in each request (***ig***
+functions actually do that in the background for you), but if you’d like
+to view your access token, use `ig_token()`.
 
 ``` r
 ## view your access token
@@ -123,7 +123,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1211579
+#> 1 metoo     1211580
 ```
 
 ### `tags/search`
@@ -142,13 +142,13 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1211579
+#>  1 metoo                 1211580
 #>  2 metootoys                4408
 #>  3 metoo❤️                 25470
 #>  4 metoodoll               26903
 #>  5 metoodolls               9878
 #>  6 metooo                   2377
-#>  7 metoomovement           24412
+#>  7 metoomovement           24413
 #>  8 metooangela             10131
 #>  9 metoobuddy               3281
 #> 10 sheknowsmetoowell       41120

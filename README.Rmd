@@ -35,7 +35,7 @@ ig_create_token("pb112zgv5065tu60pxnqvp88f6hovbur",
   "drz97x61d9s5g2nlcu87v63mdphiedcv")
 ```
 
-It's not necessary to specify your token in each request (***ig***) actually does that in the background), but if you'd like to view your access token, use `ig_token()`.
+It's not necessary to specify your token in each request (***ig*** functions actually do that in the background for you), but if you'd like to view your access token, use `ig_token()`.
 
 ```{r, eval = FALSE}
 ## view your access token
