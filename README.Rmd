@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# ig
+
+Minimal R client for interacting with Instagram's public API.
+
+## Installation
+
+You can install *ig* from [Github](https://github.com) with:
+
+```{r, eval = FALSE}
+devtools::install_github("mkearney/ig")
+```
+
+## Example
+
+Access user data
+
+```{r example}
+## get data from users
+me <- ig::ig_users_self()
+
+## view data
+me
+```
