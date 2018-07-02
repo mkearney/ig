@@ -2,9 +2,9 @@
 
 
 #' ig_token
-#' 
+#'
 #' Accessing the user's instagram token
-#' 
+#'
 #' @return The user's access token, if available.
 #' @export
 #' @rdname ig_token
@@ -36,7 +36,7 @@ ig_api_call <- function(...) {
   } else {
     path <- ""
   }
-  path <- gsub("^/|/$", "", path)
+  path <- gsub("^/", "", path)
 
   ## build url
   if (!identical(path, "")) {
@@ -49,11 +49,12 @@ ig_api_call <- function(...) {
   if (length(dots) == 1L && is.list(dots[[1]])) {
     dots <- dots[[1]]
   }
-  
+
   ## base url: if missing, set to default
-  if (!"access_token" %in% names(dots) && 
+  if (!"access_token" %in% names(dots) &&
     !identical(Sys.getenv("INSTAGRAM_PAT"), "")) {
     dots$access_token <- ig_token()
+    dots <- dots[rev(seq_along(dots))]
   } else {
     stop("expected to find `access_token` in query string")
   }
@@ -69,80 +70,72 @@ ig_api_call <- function(...) {
   url
 }
 
-ig_api_get <- function(...) {
+ig_api_get <- function(..., parse = FALSE) {
   ## build and make request
   r <- httr::GET(ig_api_call(...))
-  
+
   ## check status
   httr::warn_for_status(r)
-  
-  ## if status is clear then parse
-  if (r$status_code == 200) {
-    r <- jsonlite::fromJSON(httr::content(r, as = "text", encoding = "UTF-8"))
+
+  ## parsing
+  if (parse) {
+    if (r$status_code == 200) {
+      r <- as_json(r)
+    } else {
+      r <- as_parsed(r)
+    }
   }
-  
+
   ## return data/response
   r
 }
 
-ig_api_post <- function(...) {
+ig_api_post <- function(..., parse = FALSE) {
   ## build and make request
   r <- httr::POST(ig_api_call(...))
-  
+
   ## check status
   httr::warn_for_status(r)
-  
-  ## if status is clear then parse
-  if (r$status_code == 200) {
-    r <- jsonlite::fromJSON(httr::content(r, as = "text", encoding = "UTF-8"))
+
+  ## parsing
+  if (parse) {
+    if (r$status_code == 200) {
+      r <- as_json(r)
+    } else {
+      r <- as_parsed(r)
+    }
   }
-  
+
   ## return data/response
   invisible(r)
 }
 
-as_tbl <- function(...) {
-  tibble::as_tibble(..., validate = FALSE)
-}
-
-`%||%` <- function(a, b) a || isTRUE(tryCatch(`(`(b), error = function(e) return(FALSE)))
-
-#' users/self
-#' 
-#' Interacting with the users/self endpoint of Instagram's API
-#' 
-#' @return Returns user data.
-#' @examples
-#' \dontrun{
-#' my_ig <- ig_users_self()
-#' my_ig 
-#' }
-#' @export 
-ig_users_self <- function() {
-  r <- ig_api_get(path = "users/self")
-  as_tbl(c(r$data[!names(r$data) %in% "counts"], r$data$counts))
-}
-
-
-ig_oauth_endpoint <- function() {
-  httr::oauth_endpoint(base_url = "https://api.instagram.com/oauth",
-    authorize = "authorize", access = "access_token")
-}
 
 #' Create ig_token
-#' 
+#'
 #' Creating access token for interacting with Instagram API
-#' 
+#'
 #' @param client_id Client key.
 #' @param client_secret Client secret.
 #' @return Sets environment variable and invisibly returns access token.
 #' @rdname ig_token
 #' @export
 ig_create_token <- function(client_id, client_secret) {
+  client_id <- gsub("\\s", "", client_id)
+  client_secret <- gsub("\\s", "", client_secret)
+  Sys.setenv("HTTR_SERVER" = "127.0.0.1")
+  Sys.setenv("HTTR_SERVER_PORT" = "1410")
   app <- httr::oauth_app("ig_r_client", client_id, client_secret,
     redirect_uri = "http://127.0.0.1:1410")
-  token <- httr::oauth2.0_token(ig_oauth_endpoint(), app, cache = FALSE)
-  rtweet:::set_renv(INSTAGRAM_PAT = token$credentials$access_token)
-  message("Token created and stored as `INSTAGRAM_PAT` environment variable! To view your access token, use `ig_token()`.")
-  invisible(token$credentials$access_token)
+  token <- httr::init_oauth2.0(ig_oauth_endpoint(), app,
+    scope = "basic public_content")
+  set_renv(INSTAGRAM_PAT = token$access_token)
+  message("Token created and stored as `INSTAGRAM_PAT` environment variable!",
+  " To view your access token, use `ig_token()`.")
+  invisible(token)
+}
+
+ig_oauth_endpoint <- function() {
+  httr::oauth_endpoint(base_url = "https://api.instagram.com/oauth",
+    authorize = "authorize", access = "access_token")
 }

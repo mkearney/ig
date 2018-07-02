@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+library(ig)
 ```
 # ig
 
@@ -24,14 +25,53 @@ You can install **{ig}** from [Github](https://github.com) with:
 devtools::install_github("mkearney/ig")
 ```
 
-## Example
+## Authorization
 
-Access Instagram's **`users/self`** endpoint.
+To become authorized to interact with Instagram's API, users must first [go here and create an Instagram app](https://www.instagram.com/developer). Once you've created an app, copy the **`Client ID`** and **`Client Secret`** keys from the app's page and pass them along to `ig_create_token()`.
 
-```{r example}
-## get data from users
-me <- ig::ig_users_self()
+```{r, eval = FALSE}
+## use client_id and client_secret to create and save access token
+ig_create_token("pb112zgv5065tu60pxnqvp88f6hovbur", 
+  "drz97x61d9s5g2nlcu87v63mdphiedcv")
+
+## view your access token
+ig_token()
+```
+
+The rest of the token process is automated for you (you don't need to reference it again).
+
+## Endpoints
+
+There are numerous API endpoints, but thanks to recent changes by Instagram, most users won't get access to large amounts of public data (at least not without first going through a strict submission process). Here are some that should still work though:
+
+### `users/self`
+
+```{r users_self}
+## get your instagram data
+me <- ig_users_self()
 
 ## view data
-me
+as_tbl(me)
+```
+
+
+### `users/self/media/recent`
+
+```{r ig_users_self_media_recent}
+## get your media data
+my_media <- ig_users_self_media_recent()
+
+## view data
+as_tbl(my_media)
+```
+
+
+### `tags/search`
+
+```{r tags_search}
+## get tags data
+ig_tags <- ig_tags_search(path = "tags/search/", q = "metoo")
+
+## view data
+as_tbl(ig_tags)
 ```
