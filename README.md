@@ -123,7 +123,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1211573
+#> 1 metoo     1211576
 ```
 
 ### `tags/search`
@@ -142,7 +142,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1211573
+#>  1 metoo                 1211576
 #>  2 metootoys                4408
 #>  3 metoo❤️                 25469
 #>  4 metoodoll               26903
@@ -155,7 +155,7 @@ ig_as_tbl(ig_tags)
 #> # ... with 40 more rows
 ```
 
-### Additional endpoints
+## Additional endpoints
 
 To send requests to additional endpoints, supply the path and any
 relevant query parameters to either `ig_api_get()` or `ig_api_post()`.
@@ -166,6 +166,34 @@ ig_locs <- ig_api_get("locations/search", lat = 48.858844, lng = 2.294351)
 
 ## view data
 ig_as_tbl(ig_locs)
+#>  $ meta
+#>    $ code: 200
+#>  $ data
+#>    $ class: data.frame
+#>    $ dims: 20 obs x 4 vars
+#> # A tibble: 20 x 4
+#>    id               name                                latitude longitude
+#>  * <chr>            <chr>                                  <dbl>     <dbl>
+#>  1 2593354          Tour Eiffel                             48.9      2.29
+#>  2 1042596899175884 Effile Tower Paris                      48.9      2.30
+#>  3 6889842          Paris, France                           48.9      2.35
+#>  4 6889842          Paris, France                           48.9      2.35
+#>  5 213790743        58 Tour Eiffel                          48.9      2.29
+#>  6 372828359        Ile-de-France, France                   48.7      2.71
+#>  7 151174985        Avenue des Champs-Élysées               48.9      2.30
+#>  8 1356688971082840 58 Eiffel Tower Restaurant              48.8      2.34
+#>  9 32251308         Champs Elysees Paris                    48.9      2.30
+#> 10 299202480461728  Le Jules Verné Michelin Paris           48.9      2.29
+#> 11 238585647        Trocadéro (Paris Métro)                 48.9      2.29
+#> 12 309248170        Top Of Eiffel Tower                     48.9      2.31
+#> 13 432536411        Dinner At 58 Tour Eiffel Tower, Pa…     48.9      2.29
+#> 14 300550090365446  Cruise on the River Seine               48.9      2.29
+#> 15 350884335313484  Eiffel Tower, Paris, Fransa             48.7      2.26
+#> 16 1936391759949191 Place du Trocadéro                      48.9      2.29
+#> 17 375269519489153  Paris                                  -20.2    -70.2 
+#> 18 1567826363500627 Saint Germain                           48.9      2.33
+#> 19 467705676894039  Le Jules Verne Par Alain Ducasse, …     48.9      2.30
+#> 20 290297           Musée du quai Branly - Jacques Chi…     48.9      2.30
 ```
 
 <sup>1</sup>*note: All keys provided in examples are fake but are

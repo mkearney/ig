@@ -91,12 +91,12 @@ ig_tags <- ig_tags_search(q = "metoo")
 ig_as_tbl(ig_tags)
 ```
 
-### Additional endpoints
+## Additional endpoints
 
 To send requests to additional endpoints, supply the path and any relevant 
 query parameters to either `ig_api_get()` or `ig_api_post()`.
 
-```{r other_api, eval = FALSE}
+```{r other_api}
 ## make custom request to locations/search endpoint
 ig_locs <- ig_api_get("locations/search", lat = 48.858844, lng = 2.294351)
 
