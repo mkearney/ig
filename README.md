@@ -99,11 +99,30 @@ as_tbl(my_media)
 #> 20 125735… 1464108928   FALSE          Normal  image https://… NA
 ```
 
-### `tags/search`
+### `tags/{tags-name}`
 
 ``` r
 ## get tags data
-ig_tags <- ig_tags_search(path = "tags/search/", q = "metoo")
+ig_tags <- ig_tags_name(tag = "metoo")
+
+## view data
+as_tbl(ig_tags)
+#>  $ meta
+#>    $ code: 200
+#>  $ data
+#>    $ class: list
+#>    $ dims: 2
+#> # A tibble: 1 x 2
+#>   name  media_count
+#>   <chr>       <int>
+#> 1 metoo     1210871
+```
+
+### `tags/search`
+
+``` r
+## search tags data
+ig_tags <- ig_tags_search(q = "metoo")
 
 ## view data
 as_tbl(ig_tags)
@@ -115,13 +134,13 @@ as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1210861
+#>  1 metoo                 1210871
 #>  2 metootoys                4405
 #>  3 metoo❤️                 25443
 #>  4 metoodoll               26877
-#>  5 metoodolls               9873
+#>  5 metoodolls               9874
 #>  6 metooo                   2376
-#>  7 metoomovement           24355
+#>  7 metoomovement           24356
 #>  8 metooangela             10131
 #>  9 metoobuddy               3280
 #> 10 sheknowsmetoowell       41118

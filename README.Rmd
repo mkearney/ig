@@ -65,12 +65,21 @@ my_media <- ig_users_self_media_recent()
 as_tbl(my_media)
 ```
 
+### `tags/{tags-name}`
+
+```{r tags_name}
+## get tags data
+ig_tags <- ig_tags_name(tag = "metoo")
+
+## view data
+as_tbl(ig_tags)
+```
 
 ### `tags/search`
 
 ```{r tags_search}
-## get tags data
-ig_tags <- ig_tags_search(path = "tags/search/", q = "metoo")
+## search tags data
+ig_tags <- ig_tags_search(q = "metoo")
 
 ## view data
 as_tbl(ig_tags)
