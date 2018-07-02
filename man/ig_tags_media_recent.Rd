@@ -20,6 +20,6 @@ Interacting with the tags/{tag-name}/media/recent endpoint of Instagram's API
 \examples{
 \dontrun{
 tags_media <- ig_tags_media_recent()
-as_tbl(tags_media)
+ig_as_tbl(tags_media)
 }
 }

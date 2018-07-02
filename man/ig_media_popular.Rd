@@ -15,6 +15,6 @@ Interacting with the media/popular endpoint of Instagram's API
 \examples{
 \dontrun{
 pop <- ig_media_popular()
-as_tbl(pop)
+ig_as_tbl(pop)
 }
 }

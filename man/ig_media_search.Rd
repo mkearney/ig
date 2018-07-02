@@ -18,6 +18,6 @@ Interacting with the media/search endpoint of Instagram's API
 \examples{
 \dontrun{
 ig_media <- ig_media_search()
-as_tbl(ig_media)
+ig_as_tbl(ig_media)
 }
 }

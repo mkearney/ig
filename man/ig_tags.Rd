@@ -20,6 +20,6 @@ Interacting with the tags/{tags-name} endpoint of Instagram's API
 \examples{
 \dontrun{
 ig_tag <- ig_tags()
-as_tbl(ig_tag)
+ig_as_tbl(ig_tag)
 }
 }

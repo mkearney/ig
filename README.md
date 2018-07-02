@@ -47,7 +47,7 @@ Here are some that should still work though:
 me <- ig_users_self()
 
 ## view data
-as_tbl(me)
+ig_as_tbl(me)
 #>  $ meta
 #>    $ code: 200
 #>  $ data
@@ -66,7 +66,7 @@ as_tbl(me)
 my_media <- ig_users_self_media_recent()
 
 ## view data
-as_tbl(my_media)
+ig_as_tbl(my_media)
 #>  $ pagination
 #>    $ :
 #>  $ meta
@@ -106,7 +106,7 @@ as_tbl(my_media)
 ig_tags <- ig_tags(tag = "metoo")
 
 ## view data
-as_tbl(ig_tags)
+ig_as_tbl(ig_tags)
 #>  $ meta
 #>    $ code: 200
 #>  $ data
@@ -115,7 +115,7 @@ as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1210874
+#> 1 metoo     1211545
 ```
 
 ### `tags/search`
@@ -125,7 +125,7 @@ as_tbl(ig_tags)
 ig_tags <- ig_tags_search(q = "metoo")
 
 ## view data
-as_tbl(ig_tags)
+ig_as_tbl(ig_tags)
 #>  $ meta
 #>    $ code: 200
 #>  $ data
@@ -134,15 +134,15 @@ as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1210874
-#>  2 metootoys                4405
-#>  3 metoo❤️                 25443
-#>  4 metoodoll               26877
-#>  5 metoodolls               9874
-#>  6 metooo                   2376
-#>  7 metoomovement           24357
+#>  1 metoo                 1211545
+#>  2 metootoys                4408
+#>  3 metoo❤️                 25469
+#>  4 metoodoll               26902
+#>  5 metoodolls               9877
+#>  6 metooo                   2377
+#>  7 metoomovement           24410
 #>  8 metooangela             10131
-#>  9 metoobuddy               3280
-#> 10 sheknowsmetoowell       41118
+#>  9 metoobuddy               3281
+#> 10 sheknowsmetoowell       41120
 #> # ... with 40 more rows
 ```

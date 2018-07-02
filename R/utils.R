@@ -1,4 +1,8 @@
-is_recursive <- function(x) vapply(x, is.recursive, logical(1))
+
+
+##----------------------------------------------------------------------------##
+##                                  WRANGLING                                 ##
+##----------------------------------------------------------------------------##
 
 #' Convert ig output to tibble
 #'
@@ -7,13 +11,14 @@ is_recursive <- function(x) vapply(x, is.recursive, logical(1))
 #' @param x Output from an ig function
 #' @return Print out of summary info and a tibble of the data.
 #' @export
-as_tbl <- function(x) {
+ig_as_tbl <- function(x) {
   if (inherits(x, "response")) {
     x <- tryCatch(as_json(x), error = function(e) as_parsed(x))
   }
   if ("pagination" %in% names(x)) {
     message(" $ pagination")
-    message(paste0("   $ ", names(x$pagination), ": ", x$pagination, collapse = "\n"))
+    message(paste0("   $ ", names(x$pagination), ": ",
+      x$pagination, collapse = "\n"))
     pagination <- x$pagination
   } else {
     pagination <- NULL
@@ -44,7 +49,21 @@ as_tbl <- function(x) {
 
 as_parsed <- function(x) httr::content(x)
 
-as_json <- function(r) jsonlite::fromJSON(httr::content(r, as = "text", encoding = "UTF-8"))
+as_json <- function(r) jsonlite::fromJSON(httr::content(r,
+  as = "text", encoding = "UTF-8"))
+
+
+##----------------------------------------------------------------------------##
+##                              OBJECT VALIDATION                             ##
+##----------------------------------------------------------------------------##
+
+is_recursive <- function(x) vapply(x, is.recursive, logical(1))
+
+
+##----------------------------------------------------------------------------##
+##                                RENVIRON FUNS                               ##
+##----------------------------------------------------------------------------##
+
 
 set_renv <- function(...) {
   dots <- list(...)

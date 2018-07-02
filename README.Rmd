@@ -51,7 +51,7 @@ There are numerous API endpoints, but thanks to recent changes by Instagram, mos
 me <- ig_users_self()
 
 ## view data
-as_tbl(me)
+ig_as_tbl(me)
 ```
 
 
@@ -62,7 +62,7 @@ as_tbl(me)
 my_media <- ig_users_self_media_recent()
 
 ## view data
-as_tbl(my_media)
+ig_as_tbl(my_media)
 ```
 
 ### `tags/{tags-name}`
@@ -72,7 +72,7 @@ as_tbl(my_media)
 ig_tags <- ig_tags(tag = "metoo")
 
 ## view data
-as_tbl(ig_tags)
+ig_as_tbl(ig_tags)
 ```
 
 ### `tags/search`
@@ -82,5 +82,5 @@ as_tbl(ig_tags)
 ig_tags <- ig_tags_search(q = "metoo")
 
 ## view data
-as_tbl(ig_tags)
+ig_as_tbl(ig_tags)
 ```

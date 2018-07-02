@@ -9,6 +9,10 @@
 #' @export
 #' @rdname ig_token
 ig_token <- function() {
+  if (identical(Sys.getenv("INSTAGRAM_PAT"), "")) {
+    stop("Couldn't find access token. See `?ig_create_token()` for ",
+      "instructions on setting up and storying your access token.")
+  }
   structure(Sys.getenv("INSTAGRAM_PAT"), names = "access_token")
 }
 

@@ -6,7 +6,7 @@
 #' @examples
 #' \dontrun{
 #' pop <- ig_media_popular()
-#' as_tbl(pop)
+#' ig_as_tbl(pop)
 #' }
 #' @export
 ig_media_popular <- function() {
@@ -23,7 +23,7 @@ ig_media_popular <- function() {
 #' @examples
 #' \dontrun{
 #' ig_media <- ig_media_search()
-#' as_tbl(ig_media)
+#' ig_as_tbl(ig_media)
 #' }
 #' @export
 ig_media_search <- function(...) {
@@ -41,7 +41,7 @@ ig_media_search <- function(...) {
 #' @examples
 #' \dontrun{
 #' tags_media <- ig_tags_media_recent()
-#' as_tbl(tags_media)
+#' ig_as_tbl(tags_media)
 #' }
 #' @export
 ig_tags_media_recent <- function(tag = "nofilter", ...) {
@@ -59,7 +59,7 @@ ig_tags_media_recent <- function(tag = "nofilter", ...) {
 #' @examples
 #' \dontrun{
 #' ig_tag <- ig_tags()
-#' as_tbl(ig_tag)
+#' ig_as_tbl(ig_tag)
 #' }
 #' @export
 ig_tags <- function(tag = "nofilter", ...) {
@@ -76,7 +76,7 @@ ig_tags <- function(tag = "nofilter", ...) {
 #' @examples
 #' \dontrun{
 #' ig_tags <- ig_tags_search()
-#' as_tbl(ig_tags)
+#' ig_as_tbl(ig_tags)
 #' }
 #' @export
 ig_tags_search <- function(q, ...) {
