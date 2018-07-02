@@ -74,41 +74,45 @@ ig_api_call <- function(...) {
   url
 }
 
-ig_api_get <- function(..., parse = FALSE) {
+#' GET Instagram API
+#'
+#' Send GET requests to Instagram's API
+#'
+#' @param ... Path and query string components (endpoint parameters) should be
+#'   supplied here. If unnamed, the first object is assumed to be the API path
+#'   path, which is the string pointing to the desired API endpoint
+#'   \code{users/self}. Additional named arguments supplied here will be included
+#'   as part of the query string (trailing the "?" in the URL).
+#' @return An HTTP response object.
+#' @export
+ig_api_get <- function(...) {
   ## build and make request
   r <- httr::GET(ig_api_call(...))
 
   ## check status
   httr::warn_for_status(r)
 
-  ## parsing
-  if (parse) {
-    if (r$status_code == 200) {
-      r <- as_json(r)
-    } else {
-      r <- as_parsed(r)
-    }
-  }
-
   ## return data/response
   r
 }
 
-ig_api_post <- function(..., parse = FALSE) {
+#' POST Instagram API
+#'
+#' Send POST requests to Instagram's API
+#'
+#' @param ... Path and query string components (endpoint parameters) should be
+#'   supplied here. If unnamed, the first object is assumed to be the API path
+#'   path, which is the string pointing to the desired API endpoint
+#'   \code{users/self}. Additional named arguments supplied here will be included
+#'   as part of the query string (trailing the "?" in the URL).
+#' @return An HTTP response object.
+#' @export
+ig_api_post <- function(...) {
   ## build and make request
   r <- httr::POST(ig_api_call(...))
 
   ## check status
   httr::warn_for_status(r)
-
-  ## parsing
-  if (parse) {
-    if (r$status_code == 200) {
-      r <- as_json(r)
-    } else {
-      r <- as_parsed(r)
-    }
-  }
 
   ## return data/response
   invisible(r)

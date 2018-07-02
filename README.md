@@ -18,16 +18,24 @@ devtools::install_github("mkearney/ig")
 To become authorized to interact with Instagram’s API, users must first
 [go here and create an Instagram
 app](https://www.instagram.com/developer). Once you’ve created an app,
-copy the **`Client ID`** and **`Client Secret`** keys from the app’s
-page and pass them along to `ig_create_token()`.
+copy the **`Client ID`** and **`Client Secret`** keys<sup>1</sup> from
+the app’s page and pass them along to `ig_create_token()`.
 
 ``` r
 ## use client_id and client_secret to create and save access token
 ig_create_token("pb112zgv5065tu60pxnqvp88f6hovbur", 
   "drz97x61d9s5g2nlcu87v63mdphiedcv")
+```
 
+It’s not necessary to specify your token in each request (***ig***)
+actually does that in the background), but if you’d like to view your
+access token, use `ig_token()`.
+
+``` r
 ## view your access token
 ig_token()
+#>                                         access_token 
+#> "877861763.6001s28.4d8i211p0sf942o0394x5d4kwdk831l1" 
 ```
 
 The rest of the token process is automated for you (you don’t need to
@@ -115,7 +123,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1211545
+#> 1 metoo     1211573
 ```
 
 ### `tags/search`
@@ -134,15 +142,32 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1211545
+#>  1 metoo                 1211573
 #>  2 metootoys                4408
 #>  3 metoo❤️                 25469
-#>  4 metoodoll               26902
-#>  5 metoodolls               9877
+#>  4 metoodoll               26903
+#>  5 metoodolls               9878
 #>  6 metooo                   2377
-#>  7 metoomovement           24410
+#>  7 metoomovement           24412
 #>  8 metooangela             10131
 #>  9 metoobuddy               3281
 #> 10 sheknowsmetoowell       41120
 #> # ... with 40 more rows
 ```
+
+### Additional endpoints
+
+To send requests to additional endpoints, supply the path and any
+relevant query parameters to either `ig_api_get()` or `ig_api_post()`.
+
+``` r
+## make custom request to locations/search endpoint
+ig_locs <- ig_api_get("locations/search", lat = 48.858844, lng = 2.294351)
+
+## view data
+ig_as_tbl(ig_locs)
+```
+
+<sup>1</sup>*note: All keys provided in examples are fake but are
+otherwise designed to appear similar to the actual keys assigned by
+Instagram*

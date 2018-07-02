@@ -27,15 +27,21 @@ devtools::install_github("mkearney/ig")
 
 ## Authorization
 
-To become authorized to interact with Instagram's API, users must first [go here and create an Instagram app](https://www.instagram.com/developer). Once you've created an app, copy the **`Client ID`** and **`Client Secret`** keys from the app's page and pass them along to `ig_create_token()`.
+To become authorized to interact with Instagram's API, users must first [go here and create an Instagram app](https://www.instagram.com/developer). Once you've created an app, copy the **`Client ID`** and **`Client Secret`** keys<sup>1</sup> from the app's page and pass them along to `ig_create_token()`.
 
 ```{r, eval = FALSE}
 ## use client_id and client_secret to create and save access token
 ig_create_token("pb112zgv5065tu60pxnqvp88f6hovbur", 
   "drz97x61d9s5g2nlcu87v63mdphiedcv")
+```
 
+It's not necessary to specify your token in each request (***ig***) actually does that in the background), but if you'd like to view your access token, use `ig_token()`.
+
+```{r, eval = FALSE}
 ## view your access token
 ig_token()
+#>                                         access_token 
+#> "877861763.6001s28.4d8i211p0sf942o0394x5d4kwdk831l1" 
 ```
 
 The rest of the token process is automated for you (you don't need to reference it again).
@@ -84,3 +90,18 @@ ig_tags <- ig_tags_search(q = "metoo")
 ## view data
 ig_as_tbl(ig_tags)
 ```
+
+### Additional endpoints
+
+To send requests to additional endpoints, supply the path and any relevant 
+query parameters to either `ig_api_get()` or `ig_api_post()`.
+
+```{r other_api, eval = FALSE}
+## make custom request to locations/search endpoint
+ig_locs <- ig_api_get("locations/search", lat = 48.858844, lng = 2.294351)
+
+## view data
+ig_as_tbl(ig_locs)
+```
+
+<sup>1</sup>*note: All keys provided in examples are fake but are otherwise designed to appear similar to the actual keys assigned by Instagram*
