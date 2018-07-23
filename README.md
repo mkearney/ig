@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ig
+# ig <img src="man/figures/logo.png" width="160px" align="right" />
 
 > 🖼 A minimal R client for interacting with Instagram’s public API.
 
@@ -62,9 +62,9 @@ ig_as_tbl(me)
 #>    $ class: list
 #>    $ dims: 8
 #> # A tibble: 1 x 7
-#>   id        username  profile_picture  full_name bio   website is_business
-#>   <chr>     <chr>     <chr>            <chr>     <chr> <chr>   <lgl>      
-#> 1 175176859 mike_way… https://sconten… Mike Kea… ""    ""      FALSE
+#>   id     username  profile_picture     full_name bio   website is_business
+#>   <chr>  <chr>     <chr>               <chr>     <chr> <chr>   <lgl>      
+#> 1 17517… mike_way… https://scontent.c… Mike Kea… ""    ""      FALSE
 ```
 
 ### `users/self/media/recent`
@@ -123,7 +123,7 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 1 x 2
 #>   name  media_count
 #>   <chr>       <int>
-#> 1 metoo     1211580
+#> 1 metoo     1247390
 ```
 
 ### `tags/search`
@@ -142,16 +142,16 @@ ig_as_tbl(ig_tags)
 #> # A tibble: 50 x 2
 #>    name              media_count
 #>  * <chr>                   <int>
-#>  1 metoo                 1211580
-#>  2 metootoys                4408
-#>  3 metoo❤️                 25470
-#>  4 metoodoll               26903
-#>  5 metoodolls               9878
-#>  6 metooo                   2377
-#>  7 metoomovement           24413
-#>  8 metooangela             10131
-#>  9 metoobuddy               3281
-#> 10 sheknowsmetoowell       41120
+#>  1 metoo                 1247390
+#>  2 metoo❤️                 25948
+#>  3 metootoys                4472
+#>  4 metoomovement           26865
+#>  5 metoodoll               27522
+#>  6 metoodolls              10114
+#>  7 metooo                   2392
+#>  8 metooangela             10270
+#>  9 metoobuddy               3334
+#> 10 sheknowsmetoowell       41379
 #> # ... with 40 more rows
 ```
 
@@ -172,28 +172,28 @@ ig_as_tbl(ig_locs)
 #>    $ class: data.frame
 #>    $ dims: 20 obs x 4 vars
 #> # A tibble: 20 x 4
-#>    id               name                                latitude longitude
-#>  * <chr>            <chr>                                  <dbl>     <dbl>
-#>  1 2593354          Tour Eiffel                             48.9      2.29
-#>  2 1042596899175884 Effile Tower Paris                      48.9      2.30
-#>  3 6889842          Paris, France                           48.9      2.35
-#>  4 6889842          Paris, France                           48.9      2.35
-#>  5 213790743        58 Tour Eiffel                          48.9      2.29
-#>  6 372828359        Ile-de-France, France                   48.7      2.71
-#>  7 151174985        Avenue des Champs-Élysées               48.9      2.30
-#>  8 1356688971082840 58 Eiffel Tower Restaurant              48.8      2.34
-#>  9 32251308         Champs Elysees Paris                    48.9      2.30
-#> 10 299202480461728  Le Jules Verné Michelin Paris           48.9      2.29
-#> 11 238585647        Trocadéro (Paris Métro)                 48.9      2.29
-#> 12 309248170        Top Of Eiffel Tower                     48.9      2.31
-#> 13 432536411        Dinner At 58 Tour Eiffel Tower, Pa…     48.9      2.29
-#> 14 300550090365446  Cruise on the River Seine               48.9      2.29
-#> 15 350884335313484  Eiffel Tower, Paris, Fransa             48.7      2.26
-#> 16 1936391759949191 Place du Trocadéro                      48.9      2.29
-#> 17 375269519489153  Paris                                  -20.2    -70.2 
-#> 18 1567826363500627 Saint Germain                           48.9      2.33
-#> 19 467705676894039  Le Jules Verne Par Alain Ducasse, …     48.9      2.30
-#> 20 290297           Musée du quai Branly - Jacques Chi…     48.9      2.30
+#>    id            name                                   latitude longitude
+#>  * <chr>         <chr>                                     <dbl>     <dbl>
+#>  1 2593354       Tour Eiffel                                48.9      2.29
+#>  2 104259689917… Effile Tower Paris                         48.9      2.30
+#>  3 6889842       Paris, France                              48.9      2.35
+#>  4 808217352699… Eiffel Tower                               48.9      2.30
+#>  5 6889842       Paris, France                              48.9      2.35
+#>  6 767158323476… Eiffel Tower, Paris                        48.9      2.30
+#>  7 213790743     58 Tour Eiffel                             48.9      2.29
+#>  8 389164438201… Tour Eiffel France.                        48.9      2.29
+#>  9 372828359     Ile-de-France, France                      48.7      2.71
+#> 10 34181412      Arc de Triomphe                            48.9      2.30
+#> 11 791265207706… Torre Eiffel                               48.9      2.30
+#> 12 299202480461… Le Jules Verné Michelin Paris              48.9      2.29
+#> 13 521850351502… Torre eiffel                               48.9      2.30
+#> 14 432536411     Dinner At 58 Tour Eiffel Tower, Paris…     48.9      2.29
+#> 15 467705676894… Le Jules Verne Par Alain Ducasse, Tou…     48.9      2.30
+#> 16 151174985     Avenue des Champs-Élysées                  48.9      2.30
+#> 17 300550090365… Cruise on the River Seine                  48.9      2.29
+#> 18 263520440857… Longines Paris Eiffel Jumping              48.9      2.29
+#> 19 193639175994… Place du Trocadéro                         48.9      2.29
+#> 20 309248170     Top Of Eiffel Tower                        48.9      2.31
 ```
 
 <sup>1</sup> *NOTE*: All keys provided in examples are fake but are

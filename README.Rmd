@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 library(ig)
 ```
-# ig
+# ig <img src="man/figures/logo.png" width="160px" align="right" />
 
 > 🖼  A minimal R client for interacting with Instagram's public API.
 
